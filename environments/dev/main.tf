@@ -5,6 +5,7 @@ resource "azuread_group" "salesforce_users" {
 
 resource "azuread_application" "salesforce_app" {
   display_name = "Salesforce Global"
+}
 
   web {
     redirect_uris = [
