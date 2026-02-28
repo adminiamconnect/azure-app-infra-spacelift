@@ -2,7 +2,9 @@ provider "azurerm" {
   features {}
 }
 
-provider "azuread" {}
+provider "azuread" {
+  use_oidc = true
+}
 
 terraform {
   required_version = ">= 1.5.0"
