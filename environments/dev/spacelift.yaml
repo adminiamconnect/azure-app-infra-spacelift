@@ -1,0 +1,10 @@
+version: "1"
+
+stack:
+  name: dev-myapp
+  terraform_version: "1.5.7"
+  project_root: environments/dev
+  branch: main
+
+runner:
+  type: spacelift
