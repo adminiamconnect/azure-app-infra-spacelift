@@ -1,9 +1,6 @@
-module "salesforce_group" {
-  source     = "../../modules/groups"
-  group_name = "Salesforce Global Users"
-}
+variable "group_name" {}
 
-module "salesforce_saml_app" {
-  source   = "../../modules/saml-app"
-  app_name = "Salesforce"
+resource "azuread_group" "this" {
+  display_name     = var.group_name
+  security_enabled = true
 }
