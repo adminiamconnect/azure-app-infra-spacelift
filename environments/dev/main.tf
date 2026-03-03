@@ -23,9 +23,7 @@ module "salesforce_oidc_app" {
 #################################
 
 module "salesforce_saml_app" {
-  source = "../../modules/samlapp"
-
-  app_name  = "Salesforce SAML"
-  identifier = "https://salesforce.com"
-  reply_url  = "https://salesforce.com/saml/acs"
+  source    = "../../modules/samlapp"
+  app_name  = "salesforce-saml"
+  reply_url = "https://salesforce.com/saml/acs"
 }
