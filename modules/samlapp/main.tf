@@ -1,16 +1,17 @@
-variable "app_name" {
-  type = string
-}
+variable "app_name" {}
+variable "identifier" {}
+variable "reply_url" {}
 
-data "azuread_application_template" "template" {
+resource "azuread_application" "this" {
   display_name = var.app_name
+
+  web {
+    redirect_uris = [var.reply_url]
+  }
+
+  identifier_uris = [var.identifier]
 }
 
-resource "azuread_service_principal" "saml_sp" {
-  application_template_id = data.azuread_application_template.template.template_id
-  display_name            = var.app_name
-}
-
-output "service_principal_id" {
-  value = azuread_service_principal.saml_sp.object_id
+resource "azuread_service_principal" "this" {
+  client_id = azuread_application.this.client_id
 }
