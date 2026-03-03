@@ -9,7 +9,7 @@ resource "azuread_application" "this" {
     redirect_uris = [var.reply_url]
   }
 
-  identifier_uris = [var.identifier]
+  identifier_uris = ["api://${var.app_name}"]
 }
 
 resource "azuread_service_principal" "this" {
