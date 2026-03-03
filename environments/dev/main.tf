@@ -39,6 +39,6 @@ resource "azuread_application" "salesforceblink_app" {
   }
 
 }
-resource "azuread_service_principal" "salesforce_sp" {
+resource "azuread_service_principal" "salesforce_blink" {
   application_id = azuread_application.salesforceblink_app.application_id
 }
