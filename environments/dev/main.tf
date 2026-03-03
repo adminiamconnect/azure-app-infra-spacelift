@@ -1,12 +1,31 @@
+#################################
+# GROUP
+#################################
+
 resource "azuread_group" "salesforce_users" {
   display_name     = "Salesforce Global Users"
   security_enabled = true
 }
 
-resource "azuread_application" "salesforce_app" {
-  display_name = "Salesforce Global"
+#################################
+# OIDC APP
+#################################
+
+module "salesforce_oidc_app" {
+  source = "../../modules/oidcapp"
+
+  app_name      = "Salesforce OIDC"
+  redirect_uris = ["https://salesforce.com/oauth/callback"]
 }
 
-resource "azuread_service_principal" "salesforce_sp" {
-  application_id = azuread_application.salesforce_app.application_id
+#################################
+# SAML APP
+#################################
+
+module "salesforce_saml_app" {
+  source = "../../modules/samlapp"
+
+  app_name  = "Salesforce SAML"
+  identifier = "https://salesforce.com"
+  reply_url  = "https://salesforce.com/saml/acs"
 }
