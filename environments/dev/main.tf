@@ -1,3 +1,8 @@
+
+########################################
+# OIDC App Config
+########################################
+
 resource "azuread_group" "salesforce_users" {
   display_name     = "Salesforce Global Users"
   security_enabled = true
@@ -13,17 +18,13 @@ resource "azuread_service_principal" "salesforce_sp" {
 
 
 ########################################
-# GROUP
+# SAML APPLICATION
 ########################################
 
 resource "azuread_group" "salesforceblink_users" {
   display_name     = "Salesforce Blink Users"
   security_enabled = true
 }
-
-########################################
-# SAML APPLICATION
-########################################
 
 resource "azuread_application" "salesforceblink_app" {
   display_name = "Salesforce Blink"
