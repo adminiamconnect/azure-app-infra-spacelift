@@ -37,4 +37,8 @@ resource "azuread_application" "salesforceblink_app" {
       "https://salesforce.com/saml/acs"
     ]
   }
+
+}
+resource "azuread_service_principal" "salesforce_sp" {
+  application_id = azuread_application.salesforceblink_app.application_id
 }
