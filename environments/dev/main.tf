@@ -16,7 +16,6 @@ resource "azuread_service_principal" "salesforce_sp" {
   application_id = azuread_application.salesforce_app.application_id
 }
 
-
 ########################################
 # SAML APPLICATION
 ########################################
