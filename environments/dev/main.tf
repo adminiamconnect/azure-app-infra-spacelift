@@ -42,3 +42,19 @@ resource "azuread_application" "salesforceblink_app" {
 resource "azuread_service_principal" "salesforce_blink" {
   application_id = azuread_application.salesforceblink_app.application_id
 }
+########################################
+# OIDC App Config
+########################################
+
+resource "azuread_group" "trello_users" {
+  display_name     = "Trello Users"
+  security_enabled = true
+}
+
+resource "azuread_application" "trello_app" {
+  display_name = "Trello UK"
+}
+
+resource "azuread_service_principal" "trello_sp" {
+  application_id = azuread_application.trello_app.application_id
+}
